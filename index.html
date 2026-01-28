@@ -4,107 +4,256 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Até Encontrar | Until We Find</title>
-  <meta name="description" content="Até Encontrar: apoiar a pesquisa científica para doenças raras do neurodesenvolvimento." />
+  <meta name="description" content="Até Encontrar — apoiar a pesquisa científica para doenças raras do neurodesenvolvimento." />
+
   <style>
     :root{
-  /* Palette vert + bleu */
-  --bg:#F6FBFA;          /* fond clair, plus frais */
---fg:#163A6B;          /* bleu plus profond (titres) */
---text:#1F2A2E;        /* texte plus net */
---muted:#40535A;       /* moins grisâtre */
---line:#D3E3E1;
---card:#FFFFFF;
---accent:#2FB38C;      /* vert plus vivant */
---accent2:#2563EB;     /* bleu plus vivant (liens/CTA) */
-  --radius:18px;
-}
+      /* Bleu + Vert : plus vivant, plus “campagne”, pas gris */
+      --bg:#F6FBFA;
+      --fg:#163A6B;        /* titres */
+      --text:#162126;      /* texte principal */
+      --muted:#3B525A;     /* texte secondaire */
+      --line:#D3E6E3;      /* séparations */
+      --card:#FFFFFF;      /* cartes */
+      --accent:#2FB38C;    /* vert */
+      --accent2:#2563EB;   /* bleu */
+      --radius:18px;
+    }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-         background:var(--bg);color:var(--text);line-height:1.55}
-    a{color:var(--accent2)}
-a:hover{opacity:.9}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      line-height:1.55;
+      background:
+        radial-gradient(900px 520px at 12% 8%, rgba(37,99,235,.13), transparent 62%),
+        radial-gradient(900px 520px at 88% 18%, rgba(47,179,140,.13), transparent 62%),
+        var(--bg);
+    }
+
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{opacity:.9}
+
     .wrap{max-width:980px;margin:0 auto;padding:24px}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-         background:var(--bg);color:var(--text);line-height:1.55}
-a{color:inherit}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
+
     header{
-      position:sticky;top:0;background:rgba(245,248,247,.95);
-      backdrop-filter:saturate(180%) blur(10px);
-      border-bottom:1px solid var(--line); z-index:10;
+      position:sticky;top:0;
+      background:rgba(246,251,250,.9);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid var(--line);
+      z-index:10;
     }
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media (max-width:720px){
-  .controls{width:100%; justify-content:flex-start}
-  nav{width:100%}
-}
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
     .brand{display:flex;align-items:baseline;gap:10px}
-    .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+    .brand h1{font-size:18px;margin:0;letter-spacing:.2px;color:var(--fg)}
     .brand small{color:var(--muted)}
-    nav{display:flex;gap:14px;flex-wrap:wrap}
-    nav a{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:999px}
-    nav a:hover{background:var(--card);color:var(--fg)}
-    .controls{display:flex;gap:10px;align-items:center}
-    select,button{
-      font-size:14px;border:1px solid var(--line);background:#fff;color:var(--fg);
-      padding:8px 10px;border-radius:999px;cursor:pointer
+
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
     }
-    button.primary{background:var(--accent);color:#ffffff;border-color:var(--accent)}
-    button.primary:hover{opacity:.92}
+    nav a:hover{
+      background:rgba(37,99,235,.10);
+      color:var(--fg);
+    }
+
+    .controls{display:flex;gap:10px;align-items:center}
+
+    select,button{
+      font-size:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--fg);
+      padding:9px 12px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+
+    button.primary{
+      background:linear-gradient(135deg, var(--accent2), var(--accent));
+      color:#fff;
+      border:none;
+      box-shadow:0 10px 22px rgba(22,58,107,.14);
+      font-weight:800;
+    }
+    button.primary:hover{transform:translateY(-1px); transition:.15s}
+
+    @media (max-width:720px){
+      .controls{width:100%; justify-content:flex-start}
+      nav{width:100%}
+    }
+
+    main{padding:18px 0 60px}
+    section{scroll-margin-top:92px}
+
+    /* HERO */
     .hero{
-  padding:38px 26px 26px;
-  background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(47,179,140,.14));
-  border:1px solid var(--line);
-  border-radius:24px;
-}
+      padding:34px 26px 26px;
+      background: linear-gradient(135deg, rgba(37,99,235,.18), rgba(47,179,140,.18));
+      border-radius:28px;
+      box-shadow: 0 18px 40px rgba(22,58,107,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:30px;
+      pointer-events:none;
+      border:1px solid rgba(255,255,255,.65);
+      opacity:.7;
+    }
+
     .kicker{color:var(--muted);font-size:14px;margin:0 0 8px}
-    .title{font-size:42px;line-height:1.1;margin:0 0 14px}
-    .title{color:var(--fg)}
-    .subtitle{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 18px}
+    .title{
+      font-size:44px;
+      line-height:1.05;
+      margin:0 0 12px;
+      color:var(--fg);
+      letter-spacing:-.4px;
+    }
+    .subtitle{
+      font-size:18px;
+      color:var(--muted);
+      max-width:62ch;
+      margin:0 0 14px;
+    }
+
+    .heroImg{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow:0 12px 26px rgba(22,58,107,.12);
+      margin:14px 0 8px;
+    }
+
     .quote{
       border-left:4px solid var(--accent);
-      padding:14px 16px;margin:18px 0;background:var(--card);border-radius:12px
+      padding:14px 16px;
+      margin:16px 0 6px;
+      background:rgba(255,255,255,.72);
+      border-radius:14px;
     }
-    .quote p{margin:0;color:var(--fg);font-weight:520}
+    .quote p{margin:0;color:var(--fg);font-weight:700}
+    .notice{font-size:12px;color:var(--muted);margin-top:8px}
+
+    /* LAYOUT */
     .grid{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0 0}
     @media (min-width:860px){.grid{grid-template-columns:1.2fr .8fr}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-    .card h3{margin:0 0 8px;font-size:16px}
+
+    .card{
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 10px 22px rgba(22,58,107,.06);
+    }
+    .card h3{margin:0 0 8px;font-size:16px;color:var(--fg)}
     .card p{margin:0;color:var(--muted)}
+
     .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     .ctaRow button{
-  background: var(--accent2);
-  color:#fff;
-  border-color: var(--accent2);
-}
-.ctaRow button:hover{opacity:.92}
+      background:rgba(37,99,235,.10);
+      border:1px solid rgba(37,99,235,.25);
+      color:var(--fg);
+      font-weight:700;
+    }
+    .ctaRow button:hover{background:rgba(37,99,235,.15)}
+
     .badge{
       display:inline-flex;align-items:center;gap:8px;
       font-size:12px;color:var(--muted);
-      border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.9);
+      border-radius:999px;
+      padding:8px 10px;
+      margin-top:12px;
     }
-    main{padding:22px 0 60px}
-    section{scroll-margin-top:88px}
-    .sectionTitle{font-size:22px;margin:28px 0 10px}
-    .sectionText{color:var(--muted);max-width:78ch}
-    ul{color:var(--muted)}
+
+    .sectionTitle{font-size:22px;margin:30px 0 10px;color:var(--fg)}
+    .sectionText{color:var(--muted);max-width:78ch;margin:0 0 10px}
+    ul{color:var(--muted);margin:10px 0 0;padding-left:18px}
+
     .pillRow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
     .pill{
-  background: rgba(95,175,158,.10);
-  border:1px solid rgba(95,175,158,.25);
-  border-radius:999px;padding:8px 10px;font-size:13px;color:var(--fg)
-}
-    .footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
-    .notice{font-size:12px;color:var(--muted);margin-top:10px}
-    .divider{height:1px;background:var(--line);margin:18px 0}
+      background: rgba(47,179,140,.12);
+      border:1px solid rgba(47,179,140,.25);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:13px;
+      color:var(--fg);
+      font-weight:700;
+    }
+
+    .divider{height:1px;background:var(--line);margin:16px 0}
     .muted{color:var(--muted)}
-    /* CTA DONATION */
-.donateGrid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:12px;
-  margin-top:14px;
-}
+
+    /* DONATION CTA */
+    .donateGrid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width:720px){
+      .donateGrid{grid-template-columns:1fr}
+    }
+
+    .donateBtn{
+      display:block;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 22px rgba(22,58,107,.06);
+    }
+    .donateBtn:hover{transform:translateY(-1px); transition:.15s}
+
+    .donateTitle{
+      font-weight:900;
+      color:var(--fg);
+      font-size:16px;
+      margin-bottom:6px;
+      letter-spacing:.2px;
+    }
+    .donateSmall{font-size:13px;color:var(--muted)}
+
+    .donateBtn.pix{
+      background: linear-gradient(135deg, rgba(47,179,140,.22), rgba(255,255,255,.95));
+      border-color: rgba(47,179,140,.35);
+    }
+    .donateBtn.cardpay{
+      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(255,255,255,.95));
+      border-color: rgba(37,99,235,.35);
+    }
+    .donateBtn.intl{
+      background: linear-gradient(135deg, rgba(22,58,107,.16), rgba(255,255,255,.95));
+      border-color: rgba(22,58,107,.28);
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:18px 0;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:26px;
+    }
   </style>
 </head>
 
@@ -125,7 +274,7 @@ a{color:inherit}
     </nav>
 
     <div class="controls">
-      <select id="lang">
+      <select id="lang" aria-label="Language">
         <option value="pt">PT</option>
         <option value="fr">FR</option>
         <option value="en">EN</option>
@@ -139,29 +288,21 @@ a{color:inherit}
 
 <main class="wrap">
 
-  <!-- HOME -->
   <section id="home" class="hero">
     <p class="kicker" data-i18n="kicker">Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas</p>
     <h2 class="title" data-i18n="hero_title">Até Encontrar</h2>
+
     <p class="subtitle" data-i18n="hero_subtitle">
-      <img class="heroImg" src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1400&q=80" alt="Imagem simbólica" />
       Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com esperança lúcida, rigor e transparência.
     </p>
-.heroImg{
-  width:100%;
-  height:240px;
-  object-fit:cover;
-  border-radius:18px;
-  margin:16px 0 8px;
-  border:1px solid var(--line);
-}
+
+    <img class="heroImg"
+         src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1600&q=80"
+         alt="Imagem simbólica" />
+
     <div class="quote">
-      <p data-i18n="quote">
-        “Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”
-      </p>
-      <p class="notice" data-i18n="quote_note">
-        Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.
-      </p>
+      <p data-i18n="quote">“Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”</p>
+      <p class="notice" data-i18n="quote_note">Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.</p>
     </div>
 
     <div class="grid">
@@ -184,7 +325,7 @@ a{color:inherit}
       <div class="card">
         <h3 data-i18n="home_focus_title">Nosso foco</h3>
         <p data-i18n="home_focus_text">
-          Apoiar a pesquisa (incluindo abordagens modernas de modelagem biológica), facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.
+          Apoiar a pesquisa, facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.
         </p>
         <div class="divider"></div>
         <span class="badge" data-i18n="badge_note">📌 Exposição mínima: compartilhamos apenas o necessário</span>
@@ -192,7 +333,6 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- PKS -->
   <section id="pks">
     <h3 class="sectionTitle" data-i18n="pks_title">O que é o síndrome de Pallister-Killian (PKS)</h3>
     <p class="sectionText" data-i18n="pks_text">
@@ -205,7 +345,6 @@ a{color:inherit}
     </ul>
   </section>
 
-  <!-- RESEARCH -->
   <section id="research">
     <h3 class="sectionTitle" data-i18n="research_title">A pesquisa</h3>
     <p class="sectionText" data-i18n="research_text">
@@ -227,7 +366,6 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- ASSOCIATION -->
   <section id="association">
     <h3 class="sectionTitle" data-i18n="assoc_title">A associação</h3>
     <p class="sectionText" data-i18n="assoc_text">
@@ -254,7 +392,6 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- SUPPORT -->
   <section id="support">
     <h3 class="sectionTitle" data-i18n="support_title">Apoiar</h3>
     <p class="sectionText" data-i18n="support_text">
@@ -262,37 +399,37 @@ a{color:inherit}
     </p>
 
     <div class="card">
-  <h3 data-i18n="support_how_title">Como apoiar</h3>
+      <h3 data-i18n="support_how_title">Como apoiar</h3>
 
-  <div class="donateGrid">
-    <a class="donateBtn pix" href="#" onclick="return false;">
-      <div class="donateTitle">PIX</div>
-      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
-    </a>
+      <div class="donateGrid">
+        <a class="donateBtn pix" href="#" onclick="return false;">
+          <div class="donateTitle">PIX</div>
+          <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+        </a>
 
-    <a class="donateBtn cardpay" href="#" onclick="return false;">
-      <div class="donateTitle" data-i18n="donate_card">Cartão</div>
-      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
-    </a>
+        <a class="donateBtn cardpay" href="#" onclick="return false;">
+          <div class="donateTitle" data-i18n="donate_card">Cartão</div>
+          <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+        </a>
 
-    <a class="donateBtn intl" href="#" onclick="return false;">
-      <div class="donateTitle" data-i18n="donate_intl">Internacional</div>
-      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
-    </a>
-  </div>
+        <a class="donateBtn intl" href="#" onclick="return false;">
+          <div class="donateTitle" data-i18n="donate_intl">Internacional</div>
+          <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+        </a>
+      </div>
 
-  <p class="notice" style="margin-top:14px" data-i18n="support_how_text">
-    Em breve você encontrará aqui os dados oficiais (PIX, cartão e doações internacionais). Recomendamos manter as doações centralizadas na conta da associação.
-  </p>
+      <p class="notice" style="margin-top:14px" data-i18n="support_how_text">
+        Em breve você encontrará aqui os dados oficiais (PIX, cartão e doações internacionais). Recomendamos manter as doações centralizadas na conta da associação.
+      </p>
 
-  <div class="divider"></div>
-  <p class="muted" data-i18n="contact_text">
-    Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
-  </p>
-  <p class="notice" data-i18n="privacy_note">
-    Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.
-  </p>
-</div>
+      <div class="divider"></div>
+      <p class="muted" data-i18n="contact_text">
+        Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
+      </p>
+      <p class="notice" data-i18n="privacy_note">
+        Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.
+      </p>
+    </div>
   </section>
 
   <div class="footer">
@@ -318,7 +455,7 @@ a{color:inherit}
       pill_science:"Ciência séria",
       pill_transparency:"Transparência",
       home_focus_title:"Nosso foco",
-      home_focus_text:"Apoiar a pesquisa (incluindo abordagens modernas de modelagem biológica), facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.",
+      home_focus_text:"Apoiar a pesquisa, facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.",
       badge_note:"📌 Exposição mínima: compartilhamos apenas o necessário",
 
       pks_title:"O que é o síndrome de Pallister-Killian (PKS)",
@@ -346,13 +483,17 @@ a{color:inherit}
 
       support_title:"Apoiar",
       support_text:"Se você deseja ajudar, existem várias formas: doar, divulgar e conectar famílias. Cada apoio contribui para tornar a pesquisa possível.",
-      support_how_title:"Como apoiar (em breve)",
-      support_how_text:"Aqui você poderá adicionar: PIX, transferência bancária, cartão, e links oficiais. Recomendamos manter tudo centralizado na conta da associação.",
+      support_how_title:"Como apoiar",
+      support_how_text:"Em breve você encontrará aqui os dados oficiais (PIX, cartão e doações internacionais). Recomendamos manter as doações centralizadas na conta da associação.",
+      donate_soon:"Em breve",
+      donate_card:"Cartão",
+      donate_intl:"Internacional",
       contact_text:"Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>",
       privacy_note:"Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.",
 
       footer_text:"© <span id='year2'></span> Até Encontrar / Until We Find. Transparência, ciência e respeito."
     },
+
     fr: {
       nav_home:"Accueil", nav_pks:"PKS", nav_research:"Recherche", nav_association:"Association", nav_support:"Soutenir",
       btn_support:"Soutenir",
@@ -369,7 +510,7 @@ a{color:inherit}
       pill_science:"Science sérieuse",
       pill_transparency:"Transparence",
       home_focus_title:"Notre objectif",
-      home_focus_text:"Soutenir la recherche (y compris des approches modernes de modélisation biologique), faciliter la participation à des protocoles de recherche et préserver la qualité de vie — sans promesses et avec suivi médical.",
+      home_focus_text:"Soutenir la recherche, faciliter la participation à des protocoles de recherche et préserver la qualité de vie — sans promesses et avec suivi médical.",
       badge_note:"📌 Exposition minimale : nous partageons seulement l’essentiel",
 
       pks_title:"Qu’est-ce que le syndrome de Pallister-Killian (PKS) ?",
@@ -397,13 +538,17 @@ a{color:inherit}
 
       support_title:"Soutenir",
       support_text:"Si vous souhaitez aider, plusieurs moyens existent : donner, partager et connecter des familles. Chaque soutien rend la recherche plus possible.",
-      support_how_title:"Comment soutenir (bientôt)",
-      support_how_text:"Vous pourrez ajouter ici : PIX, virement, carte, et liens officiels. Recommandation : centraliser sur le compte de l’association.",
+      support_how_title:"Comment soutenir",
+      support_how_text:"Vous trouverez bientôt ici les informations officielles (PIX, carte, dons internationaux). Recommandation : centraliser les dons sur le compte de l’association.",
+      donate_soon:"Bientôt",
+      donate_card:"Carte",
+      donate_intl:"International",
       contact_text:"Contact : <b>email@exemple.org</b> · Instagram : <b>@ateencontrar</b>",
       privacy_note:"Nous avons choisi de préserver l’intimité de Giulia et de notre famille. Nous partagerons seulement l’essentiel, avec respect et sobriété.",
 
       footer_text:"© <span id='year2'></span> Até Encontrar / Until We Find. Transparence, science et respect."
     },
+
     en: {
       nav_home:"Home", nav_pks:"PKS", nav_research:"Research", nav_association:"Association", nav_support:"Support",
       btn_support:"Support",
@@ -420,7 +565,7 @@ a{color:inherit}
       pill_science:"Serious science",
       pill_transparency:"Transparency",
       home_focus_title:"Our focus",
-      home_focus_text:"Support research (including modern patient-derived modeling approaches), enable participation in research protocols, and protect quality of life — without promises and with medical follow-up.",
+      home_focus_text:"Support research, enable participation in research protocols, and protect quality of life — without promises and with medical follow-up.",
       badge_note:"📌 Minimal exposure: we share only what’s necessary",
 
       pks_title:"What is Pallister-Killian syndrome (PKS)?",
@@ -448,8 +593,11 @@ a{color:inherit}
 
       support_title:"Support",
       support_text:"If you’d like to help, there are several ways: donate, share, and connect families. Every support makes research more possible.",
-      support_how_title:"How to support (coming soon)",
-      support_how_text:"Add here: PIX, bank transfer, card payments, and official links. Recommendation: keep everything centralized in the association account.",
+      support_how_title:"How to support",
+      support_how_text:"Soon you’ll find the official details here (PIX, card, international donations). Recommendation: keep donations centralized in the association account.",
+      donate_soon:"Coming soon",
+      donate_card:"Card",
+      donate_intl:"International",
       contact_text:"Contact: <b>email@example.org</b> · Instagram: <b>@ateencontrar</b>",
       privacy_note:"We chose to protect Giulia’s and our family’s privacy. We will share only what’s necessary, with respect and sobriety.",
 
@@ -463,24 +611,23 @@ a{color:inherit}
 
   function applyLang(lang){
     document.documentElement.lang = (lang === 'pt') ? 'pt-BR' : (lang === 'fr' ? 'fr' : 'en');
-    // brand
-    document.getElementById('brandName').textContent = (lang==='pt') ? 'Até Encontrar' : (lang==='fr' ? 'Jusqu’à trouver' : 'Until We Find');
-    document.getElementById('brandAlt').textContent = (lang==='pt') ? 'Until We Find' : (lang==='fr' ? 'Until We Find' : 'Até Encontrar');
+
+    document.getElementById('brandName').textContent =
+      (lang==='pt') ? 'Até Encontrar' : (lang==='fr' ? 'Jusqu’à trouver' : 'Until We Find');
+
+    document.getElementById('brandAlt').textContent =
+      (lang==='pt') ? 'Until We Find' : (lang==='fr' ? 'Until We Find' : 'Até Encontrar');
 
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n');
       const val = i18n[lang][key];
       if(!val) return;
-      // allow bold tags in a few strings
       el.innerHTML = val;
     });
 
-    // footer year placeholder
     document.querySelectorAll('#year2').forEach(x=>x.textContent = new Date().getFullYear());
-    // button text in header already handled via data-i18n
   }
 
-  // init
   applyLang('pt');
   langSelect.addEventListener('change', (e)=>applyLang(e.target.value));
 </script>
