@@ -1,422 +1,222 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Até Encontrar | Until We Find</title>
-  <meta name="description" content="Até Encontrar: apoiar a pesquisa científica para doenças raras do neurodesenvolvimento." />
+
   <style>
     :root{
-      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --line:#e2e8f0;
-      --card:#f8fafc; --accent:#0ea5e9; --accent2:#f59e0b;
+      --bg:#FAF7F2;
+      --title:#1E3A5F;
+      --text:#2E2E2E;
+      --muted:#6B7280;
+      --line:#E7DED4;
+      --card:#FFFDF9;
+      --accent:#8FB996;
       --radius:18px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-         background:var(--bg);color:var(--fg);line-height:1.55}
-    a{color:inherit}
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      max-width:960px;
+      margin:0 auto;
+      padding:24px;
+    }
+
     header{
-      position:sticky;top:0;background:rgba(255,255,255,.88);
-      backdrop-filter:saturate(180%) blur(10px);
-      border-bottom:1px solid var(--line); z-index:10;
+      position:sticky;
+      top:0;
+      background:rgba(250,247,242,.95);
+      border-bottom:1px solid var(--line);
     }
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:baseline;gap:10px}
-    .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
-    .brand small{color:var(--muted)}
-    nav{display:flex;gap:14px;flex-wrap:wrap}
-    nav a{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:999px}
-    nav a:hover{background:var(--card);color:var(--fg)}
-    .controls{display:flex;gap:10px;align-items:center}
-    select,button{
-      font-size:14px;border:1px solid var(--line);background:#fff;color:var(--fg);
-      padding:8px 10px;border-radius:999px;cursor:pointer
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
     }
-    button.primary{background:var(--fg);color:#fff;border-color:var(--fg)}
-    button.primary:hover{opacity:.92}
-    .hero{padding:38px 0 26px}
-    .kicker{color:var(--muted);font-size:14px;margin:0 0 8px}
-    .title{font-size:42px;line-height:1.1;margin:0 0 14px}
-    .subtitle{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 18px}
+
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      color:var(--title);
+    }
+
+    .brand small{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      font-size:14px;
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    nav a:hover{
+      background:var(--card);
+      color:var(--title);
+    }
+
+    button{
+      background:var(--accent);
+      border:none;
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    main{
+      padding:48px 0;
+    }
+
+    h2{
+      font-size:40px;
+      color:var(--title);
+      margin-bottom:16px;
+    }
+
+    h3{
+      color:var(--title);
+      margin-top:48px;
+    }
+
     .quote{
+      margin:32px 0;
+      padding:20px;
+      background:var(--card);
       border-left:4px solid var(--accent);
-      padding:14px 16px;margin:18px 0;background:var(--card);border-radius:12px
+      border-radius:12px;
     }
-    .quote p{margin:0;color:var(--fg);font-weight:520}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0 0}
-    @media (min-width:860px){.grid{grid-template-columns:1.2fr .8fr}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-    .card h3{margin:0 0 8px;font-size:16px}
-    .card p{margin:0;color:var(--muted)}
-    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;color:var(--muted);
-      border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px
+
+    .card{
+      background:var(--card);
+      padding:24px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      margin-top:16px;
     }
-    main{padding:22px 0 60px}
-    section{scroll-margin-top:88px}
-    .sectionTitle{font-size:22px;margin:28px 0 10px}
-    .sectionText{color:var(--muted);max-width:78ch}
-    ul{color:var(--muted)}
-    .pillRow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
-    .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-size:13px;color:var(--muted)}
-    .footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
-    .notice{font-size:12px;color:var(--muted);margin-top:10px}
-    .divider{height:1px;background:var(--line);margin:18px 0}
-    .muted{color:var(--muted)}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px;
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
   </style>
 </head>
 
 <body>
+
 <header>
-  <div class="wrap topbar">
+  <div class="container top">
     <div class="brand">
-      <h1 id="brandName">Até Encontrar</h1>
-      <small id="brandAlt">Until We Find</small>
+      <h1>Até Encontrar</h1>
+      <small>Until We Find</small>
     </div>
 
     <nav>
-      <a href="#home" data-i18n="nav_home">Início</a>
-      <a href="#pks" data-i18n="nav_pks">PKS</a>
-      <a href="#research" data-i18n="nav_research">Pesquisa</a>
-      <a href="#association" data-i18n="nav_association">Associação</a>
-      <a href="#support" data-i18n="nav_support">Apoiar</a>
+      <a href="#home">Início</a>
+      <a href="#pks">PKS</a>
+      <a href="#research">Pesquisa</a>
+      <a href="#association">Associação</a>
+      <a href="#support">Apoiar</a>
     </nav>
 
-    <div class="controls">
-      <select id="lang">
-        <option value="pt">PT</option>
-        <option value="fr">FR</option>
-        <option value="en">EN</option>
-      </select>
-      <button class="primary" onclick="document.getElementById('support').scrollIntoView({behavior:'smooth'})" data-i18n="btn_support">
-        Apoiar
-      </button>
-    </div>
+    <button>Apoiar</button>
   </div>
 </header>
 
-<main class="wrap">
+<main class="container">
 
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <p class="kicker" data-i18n="kicker">Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas</p>
-    <h2 class="title" data-i18n="hero_title">Até Encontrar</h2>
-    <p class="subtitle" data-i18n="hero_subtitle">
-      Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com esperança lúcida, rigor e transparência.
+  <section id="home">
+    <h2>Até Encontrar</h2>
+
+    <p>
+      Criamos esta associação para apoiar a pesquisa científica em doenças raras
+      do neurodesenvolvimento, com esperança lúcida, rigor e transparência.
     </p>
 
     <div class="quote">
-      <p data-i18n="quote">
-        “Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”
-      </p>
-      <p class="notice" data-i18n="quote_note">
-        Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.
+      <p>
+        “Todas as doenças são curáveis.  
+        Ainda precisamos encontrar o tratamento.”
       </p>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3 data-i18n="home_why_title">Por que agora</h3>
-        <p data-i18n="home_why_text">
-          Em doenças raras, o maior obstáculo muitas vezes é a falta de recursos para investigar. Enquanto o tempo passa, o desenvolvimento continua. Agir agora é dar uma chance à ciência.
-        </p>
-        <div class="ctaRow">
-          <button onclick="document.getElementById('research').scrollIntoView({behavior:'smooth'})" data-i18n="btn_learn_research">Entender a pesquisa</button>
-          <button onclick="document.getElementById('association').scrollIntoView({behavior:'smooth'})" data-i18n="btn_transparency">Transparência</button>
-        </div>
-        <div class="pillRow">
-          <span class="pill" data-i18n="pill_dignity">Dignidade & privacidade</span>
-          <span class="pill" data-i18n="pill_science">Ciência séria</span>
-          <span class="pill" data-i18n="pill_transparency">Transparência</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 data-i18n="home_focus_title">Nosso foco</h3>
-        <p data-i18n="home_focus_text">
-          Apoiar a pesquisa (incluindo abordagens modernas de modelagem biológica), facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.
-        </p>
-        <div class="divider"></div>
-        <span class="badge" data-i18n="badge_note">📌 Exposição mínima: compartilhamos apenas o necessário</span>
-      </div>
-    </div>
+    <p>
+      Enquanto a ciência busca respostas, o tempo continua passando.
+      Nossa missão é dar tempo à pesquisa — e à vida.
+    </p>
   </section>
 
-  <!-- PKS -->
   <section id="pks">
-    <h3 class="sectionTitle" data-i18n="pks_title">O que é o síndrome de Pallister-Killian (PKS)</h3>
-    <p class="sectionText" data-i18n="pks_text">
-      O PKS é uma condição genética rara do neurodesenvolvimento. Ela costuma ocorrer em mosaico, o que contribui para uma grande variabilidade clínica. Cada criança é única: existem quadros muito graves e outros mais leves, porém ainda desafiadores.
+    <h3>O que é o síndrome de Pallister-Killian (PKS)</h3>
+    <p>
+      O PKS é uma condição genética rara do neurodesenvolvimento,
+      geralmente presente em mosaico, o que explica a grande variabilidade clínica.
+      Cada criança é única.
     </p>
-    <ul>
-      <li data-i18n="pks_li1">A variabilidade é real: comparações em redes sociais não refletem a realidade científica.</li>
-      <li data-i18n="pks_li2">Hoje não existe tratamento curativo específico, e a pesquisa dedicada é limitada.</li>
-      <li data-i18n="pks_li3">Acompanhamento multidisciplinar e terapias de suporte podem ajudar a melhorar função e qualidade de vida.</li>
-    </ul>
   </section>
 
-  <!-- RESEARCH -->
   <section id="research">
-    <h3 class="sectionTitle" data-i18n="research_title">A pesquisa</h3>
-    <p class="sectionText" data-i18n="research_text">
-      Avanços recentes em genética, biologia celular e neurociência permitem estudar doenças raras de maneiras mais seguras e precisas, inclusive com modelos derivados do próprio paciente. Essas abordagens ajudam a compreender mecanismos, comparar perfis e explorar hipóteses sem testar diretamente na criança.
+    <h3>A pesquisa</h3>
+    <p>
+      Avanços recentes em genética, biologia celular e neurociência permitem
+      estudar doenças raras de forma mais precisa, inclusive por meio de
+      modelos derivados do próprio paciente.
     </p>
-    <div class="grid">
-      <div class="card">
-        <h3 data-i18n="research_how_title">Como a ciência avança</h3>
-        <p data-i18n="research_how_text">
-          A pesquisa é feita por etapas: gerar evidências iniciais, testar hipóteses em modelos, avaliar segurança e só então considerar caminhos clínicos. É um processo longo e sem garantias — por isso, transparência é essencial.
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-i18n="research_need_title">Por que o apoio importa</h3>
-        <p data-i18n="research_need_text">
-          Em doenças raras, o problema não é falta de perguntas, mas falta de meios para investigá-las. Apoiar pesquisa é criar a possibilidade de respostas.
-        </p>
-      </div>
-    </div>
   </section>
 
-  <!-- ASSOCIATION -->
   <section id="association">
-    <h3 class="sectionTitle" data-i18n="assoc_title">A associação</h3>
-    <p class="sectionText" data-i18n="assoc_text">
-      Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento, com foco em rigor, transparência e respeito à privacidade da família.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3 data-i18n="assoc_axes_title">Nossos eixos</h3>
-        <ul>
-          <li data-i18n="assoc_axes1"><b>Pesquisa científica:</b> apoio a projetos e estudos exploratórios.</li>
-          <li data-i18n="assoc_axes2"><b>Logística para pesquisa:</b> deslocamentos, hospedagem e custos vinculados a protocolos de pesquisa.</li>
-          <li data-i18n="assoc_axes3"><b>Qualidade de vida:</b> ações de bem-estar e suporte funcional, sem substituir acompanhamento médico.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3 data-i18n="assoc_transp_title">Transparência</h3>
-        <p data-i18n="assoc_transp_text">
-          Publicaremos atualizações periódicas sobre valores arrecadados e uso dos recursos. Não fazemos promessas de resultados. Nosso compromisso é com a honestidade.
-        </p>
-        <p class="notice" data-i18n="assoc_transp_note">
-          (Você poderá inserir aqui: CNPJ, diretoria, e relatórios em PDF quando estiverem prontos.)
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SUPPORT -->
-  <section id="support">
-    <h3 class="sectionTitle" data-i18n="support_title">Apoiar</h3>
-    <p class="sectionText" data-i18n="support_text">
-      Se você deseja ajudar, existem várias formas: doar, divulgar e conectar famílias. Cada apoio contribui para tornar a pesquisa possível.
-    </p>
-
+    <h3>A associação</h3>
     <div class="card">
-      <h3 data-i18n="support_how_title">Como apoiar (em breve)</h3>
-      <p class="muted" data-i18n="support_how_text">
-        Aqui você poderá adicionar: PIX, transferência bancária, cartão, e links oficiais. Recomendamos manter tudo centralizado na conta da associação.
-      </p>
-      <div class="divider"></div>
-      <p class="muted" data-i18n="contact_text">
-        Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
-      </p>
-      <p class="notice" data-i18n="privacy_note">
-        Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.
+      <p>
+        Nossa atuação se baseia em três pilares:
+        apoio à pesquisa científica, suporte logístico para participação em
+        protocolos de pesquisa e promoção da qualidade de vida,
+        sempre sem substituir acompanhamento médico.
       </p>
     </div>
   </section>
 
-  <div class="footer">
-    <span data-i18n="footer_text">© <span id="year"></span> Até Encontrar / Until We Find. Transparência, ciência e respeito.</span>
-  </div>
+  <section id="support">
+    <h3>Apoiar</h3>
+    <p>
+      Apoiar esta iniciativa é ajudar a tornar a pesquisa possível.
+      Cada gesto conta.
+    </p>
+  </section>
+
 </main>
 
-<script>
-  const i18n = {
-    pt: {
-      nav_home:"Início", nav_pks:"PKS", nav_research:"Pesquisa", nav_association:"Associação", nav_support:"Apoiar",
-      btn_support:"Apoiar",
-      kicker:"Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas",
-      hero_title:"Até Encontrar",
-      hero_subtitle:"Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com esperança lúcida, rigor e transparência.",
-      quote:"“Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”",
-      quote_note:"Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.",
-      home_why_title:"Por que agora",
-      home_why_text:"Em doenças raras, o maior obstáculo muitas vezes é a falta de recursos para investigar. Enquanto o tempo passa, o desenvolvimento continua. Agir agora é dar uma chance à ciência.",
-      btn_learn_research:"Entender a pesquisa",
-      btn_transparency:"Transparência",
-      pill_dignity:"Dignidade & privacidade",
-      pill_science:"Ciência séria",
-      pill_transparency:"Transparência",
-      home_focus_title:"Nosso foco",
-      home_focus_text:"Apoiar a pesquisa (incluindo abordagens modernas de modelagem biológica), facilitar a participação em protocolos de pesquisa e fortalecer a qualidade de vida — sempre sem promessas e com acompanhamento médico.",
-      badge_note:"📌 Exposição mínima: compartilhamos apenas o necessário",
+<footer>
+  © 2026 — Até Encontrar / Until We Find  
+  <br>Ciência, transparência e respeito.
+</footer>
 
-      pks_title:"O que é o síndrome de Pallister-Killian (PKS)",
-      pks_text:"O PKS é uma condição genética rara do neurodesenvolvimento. Ela costuma ocorrer em mosaico, o que contribui para uma grande variabilidade clínica. Cada criança é única: existem quadros muito graves e outros mais leves, porém ainda desafiadores.",
-      pks_li1:"A variabilidade é real: comparações em redes sociais não refletem a realidade científica.",
-      pks_li2:"Hoje não existe tratamento curativo específico, e a pesquisa dedicada é limitada.",
-      pks_li3:"Acompanhamento multidisciplinar e terapias de suporte podem ajudar a melhorar função e qualidade de vida.",
-
-      research_title:"A pesquisa",
-      research_text:"Avanços recentes em genética, biologia celular e neurociência permitem estudar doenças raras de maneiras mais seguras e precisas, inclusive com modelos derivados do próprio paciente. Essas abordagens ajudam a compreender mecanismos, comparar perfis e explorar hipóteses sem testar diretamente na criança.",
-      research_how_title:"Como a ciência avança",
-      research_how_text:"A pesquisa é feita por etapas: gerar evidências iniciais, testar hipóteses em modelos, avaliar segurança e só então considerar caminhos clínicos. É um processo longo e sem garantias — por isso, transparência é essencial.",
-      research_need_title:"Por que o apoio importa",
-      research_need_text:"Em doenças raras, o problema não é falta de perguntas, mas falta de meios para investigá-las. Apoiar pesquisa é criar a possibilidade de respostas.",
-
-      assoc_title:"A associação",
-      assoc_text:"Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento, com foco em rigor, transparência e respeito à privacidade da família.",
-      assoc_axes_title:"Nossos eixos",
-      assoc_axes1:"<b>Pesquisa científica:</b> apoio a projetos e estudos exploratórios.",
-      assoc_axes2:"<b>Logística para pesquisa:</b> deslocamentos, hospedagem e custos vinculados a protocolos de pesquisa.",
-      assoc_axes3:"<b>Qualidade de vida:</b> ações de bem-estar e suporte funcional, sem substituir acompanhamento médico.",
-      assoc_transp_title:"Transparência",
-      assoc_transp_text:"Publicaremos atualizações periódicas sobre valores arrecadados e uso dos recursos. Não fazemos promessas de resultados. Nosso compromisso é com a honestidade.",
-      assoc_transp_note:"(Você poderá inserir aqui: CNPJ, diretoria, e relatórios em PDF quando estiverem prontos.)",
-
-      support_title:"Apoiar",
-      support_text:"Se você deseja ajudar, existem várias formas: doar, divulgar e conectar famílias. Cada apoio contribui para tornar a pesquisa possível.",
-      support_how_title:"Como apoiar (em breve)",
-      support_how_text:"Aqui você poderá adicionar: PIX, transferência bancária, cartão, e links oficiais. Recomendamos manter tudo centralizado na conta da associação.",
-      contact_text:"Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>",
-      privacy_note:"Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.",
-
-      footer_text:"© <span id='year2'></span> Até Encontrar / Until We Find. Transparência, ciência e respeito."
-    },
-    fr: {
-      nav_home:"Accueil", nav_pks:"PKS", nav_research:"Recherche", nav_association:"Association", nav_support:"Soutenir",
-      btn_support:"Soutenir",
-      kicker:"Une initiative pour donner du temps à la vie, pendant que la science cherche des réponses",
-      hero_title:"Jusqu’à trouver",
-      hero_subtitle:"Nous avons créé cette association pour soutenir la recherche scientifique sur les maladies rares du neurodéveloppement — avec un espoir lucide, de la rigueur et de la transparence.",
-      quote:"« Toutes les maladies sont curables. Encore faut-il trouver le traitement. »",
-      quote_note:"Cette phrase est une boussole, pas une promesse. La recherche prend du temps et il n’y a aucune garantie.",
-      home_why_title:"Pourquoi maintenant",
-      home_why_text:"Dans les maladies rares, le principal obstacle est souvent le manque de moyens pour explorer. Pendant que le temps passe, le développement continue. Agir maintenant, c’est donner une chance à la science.",
-      btn_learn_research:"Comprendre la recherche",
-      btn_transparency:"Transparence",
-      pill_dignity:"Dignité & vie privée",
-      pill_science:"Science sérieuse",
-      pill_transparency:"Transparence",
-      home_focus_title:"Notre objectif",
-      home_focus_text:"Soutenir la recherche (y compris des approches modernes de modélisation biologique), faciliter la participation à des protocoles de recherche et préserver la qualité de vie — sans promesses et avec suivi médical.",
-      badge_note:"📌 Exposition minimale : nous partageons seulement l’essentiel",
-
-      pks_title:"Qu’est-ce que le syndrome de Pallister-Killian (PKS) ?",
-      pks_text:"Le PKS est une maladie génétique rare du neurodéveloppement, souvent présente en mosaïque, ce qui contribue à une grande variabilité clinique. Chaque enfant est unique : certaines formes sont très sévères, d’autres plus discrètes mais toujours exigeantes.",
-      pks_li1:"La variabilité est réelle : les réseaux sociaux ne représentent pas un échantillon scientifique.",
-      pks_li2:"Il n’existe pas de traitement curatif spécifique à ce jour, et la recherche dédiée est limitée.",
-      pks_li3:"Un suivi pluridisciplinaire et des thérapies de soutien peuvent améliorer la fonction et la qualité de vie.",
-
-      research_title:"La recherche",
-      research_text:"Les progrès récents en génétique, biologie cellulaire et neurosciences permettent d’étudier des maladies rares de façon plus précise, notamment avec des modèles dérivés du patient. Cela aide à comprendre les mécanismes, comparer des profils et explorer des hypothèses sans tester directement sur l’enfant.",
-      research_how_title:"Comment la science avance",
-      research_how_text:"La recherche progresse par étapes : produire des preuves initiales, tester des hypothèses sur des modèles, évaluer la sécurité, puis seulement envisager des voies cliniques. C’est long et sans garanties — d’où l’importance de la transparence.",
-      research_need_title:"Pourquoi le soutien compte",
-      research_need_text:"Dans les maladies rares, le problème n’est pas le manque de questions, mais le manque de moyens pour enquêter. Soutenir la recherche, c’est créer la possibilité de réponses.",
-
-      assoc_title:"L’association",
-      assoc_text:"Nous avons créé cette association pour soutenir la recherche scientifique sur les maladies rares du neurodéveloppement, avec rigueur, transparence et respect de la vie privée.",
-      assoc_axes_title:"Nos axes",
-      assoc_axes1:"<b>Recherche scientifique :</b> soutien à des projets et études exploratoires.",
-      assoc_axes2:"<b>Logistique liée à la recherche :</b> déplacements, hébergement et coûts associés aux protocoles.",
-      assoc_axes3:"<b>Qualité de vie :</b> actions de bien-être et soutien fonctionnel, sans se substituer au suivi médical.",
-      assoc_transp_title:"Transparence",
-      assoc_transp_text:"Nous publierons des mises à jour régulières sur les fonds collectés et leur utilisation. Nous ne promettons aucun résultat. Notre engagement est l’honnêteté.",
-      assoc_transp_note:"(Vous pourrez ajouter ici : CNPJ, gouvernance, et rapports PDF dès qu’ils seront prêts.)",
-
-      support_title:"Soutenir",
-      support_text:"Si vous souhaitez aider, plusieurs moyens existent : donner, partager et connecter des familles. Chaque soutien rend la recherche plus possible.",
-      support_how_title:"Comment soutenir (bientôt)",
-      support_how_text:"Vous pourrez ajouter ici : PIX, virement, carte, et liens officiels. Recommandation : centraliser sur le compte de l’association.",
-      contact_text:"Contact : <b>email@exemple.org</b> · Instagram : <b>@ateencontrar</b>",
-      privacy_note:"Nous avons choisi de préserver l’intimité de Giulia et de notre famille. Nous partagerons seulement l’essentiel, avec respect et sobriété.",
-
-      footer_text:"© <span id='year2'></span> Até Encontrar / Until We Find. Transparence, science et respect."
-    },
-    en: {
-      nav_home:"Home", nav_pks:"PKS", nav_research:"Research", nav_association:"Association", nav_support:"Support",
-      btn_support:"Support",
-      kicker:"An initiative to give time to life while science searches for answers",
-      hero_title:"Until We Find",
-      hero_subtitle:"We created this association to support scientific research on rare neurodevelopmental conditions — with honest hope, rigor, and transparency.",
-      quote:"“All diseases are curable. We still need to find the treatment.”",
-      quote_note:"This sentence is a compass, not a promise. Research takes time and there are no guarantees.",
-      home_why_title:"Why now",
-      home_why_text:"In rare diseases, the biggest barrier is often lack of resources to investigate. While time passes, development continues. Acting now gives science a chance.",
-      btn_learn_research:"Understand the research",
-      btn_transparency:"Transparency",
-      pill_dignity:"Dignity & privacy",
-      pill_science:"Serious science",
-      pill_transparency:"Transparency",
-      home_focus_title:"Our focus",
-      home_focus_text:"Support research (including modern patient-derived modeling approaches), enable participation in research protocols, and protect quality of life — without promises and with medical follow-up.",
-      badge_note:"📌 Minimal exposure: we share only what’s necessary",
-
-      pks_title:"What is Pallister-Killian syndrome (PKS)?",
-      pks_text:"PKS is a rare genetic neurodevelopmental condition, often occurring in mosaic form, which contributes to high clinical variability. Every child is unique: some forms are very severe, others less visible but still challenging.",
-      pks_li1:"Variability is real: social media is not a scientific sample.",
-      pks_li2:"There is currently no specific curative treatment, and dedicated research is limited.",
-      pks_li3:"Multidisciplinary care and supportive therapies can improve function and quality of life.",
-
-      research_title:"Research",
-      research_text:"Recent advances in genetics, cell biology, and neuroscience enable more precise study of rare diseases, including patient-derived models. These approaches help understand mechanisms, compare profiles, and explore hypotheses without testing directly on the child.",
-      research_how_title:"How science moves forward",
-      research_how_text:"Research progresses in stages: early evidence, hypothesis testing in models, safety assessment, and only then potential clinical paths. It’s long and uncertain — transparency is essential.",
-      research_need_title:"Why support matters",
-      research_need_text:"In rare diseases, the issue isn’t lack of questions but lack of funding to explore them. Supporting research creates the possibility of answers.",
-
-      assoc_title:"The association",
-      assoc_text:"We created this association to support scientific research on rare neurodevelopmental conditions, with rigor, transparency, and respect for privacy.",
-      assoc_axes_title:"Our pillars",
-      assoc_axes1:"<b>Scientific research:</b> support for exploratory projects and studies.",
-      assoc_axes2:"<b>Research logistics:</b> travel, accommodation, and protocol-related costs.",
-      assoc_axes3:"<b>Quality of life:</b> wellbeing and functional support, not replacing medical care.",
-      assoc_transp_title:"Transparency",
-      assoc_transp_text:"We will publish regular updates on funds raised and their use. We do not promise results. Our commitment is honesty.",
-      assoc_transp_note:"(You can add here: CNPJ, governance, and PDF reports once ready.)",
-
-      support_title:"Support",
-      support_text:"If you’d like to help, there are several ways: donate, share, and connect families. Every support makes research more possible.",
-      support_how_title:"How to support (coming soon)",
-      support_how_text:"Add here: PIX, bank transfer, card payments, and official links. Recommendation: keep everything centralized in the association account.",
-      contact_text:"Contact: <b>email@example.org</b> · Instagram: <b>@ateencontrar</b>",
-      privacy_note:"We chose to protect Giulia’s and our family’s privacy. We will share only what’s necessary, with respect and sobriety.",
-
-      footer_text:"© <span id='year2'></span> Até Encontrar / Until We Find. Transparency, science, and respect."
-    }
-  };
-
-  const langSelect = document.getElementById('lang');
-  const yearEl = document.getElementById('year');
-  yearEl.textContent = new Date().getFullYear();
-
-  function applyLang(lang){
-    document.documentElement.lang = (lang === 'pt') ? 'pt-BR' : (lang === 'fr' ? 'fr' : 'en');
-    // brand
-    document.getElementById('brandName').textContent = (lang==='pt') ? 'Até Encontrar' : (lang==='fr' ? 'Jusqu’à trouver' : 'Until We Find');
-    document.getElementById('brandAlt').textContent = (lang==='pt') ? 'Until We Find' : (lang==='fr' ? 'Until We Find' : 'Até Encontrar');
-
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      const val = i18n[lang][key];
-      if(!val) return;
-      // allow bold tags in a few strings
-      el.innerHTML = val;
-    });
-
-    // footer year placeholder
-    document.querySelectorAll('#year2').forEach(x=>x.textContent = new Date().getFullYear());
-    // button text in header already handled via data-i18n
-  }
-
-  // init
-  applyLang('pt');
-  langSelect.addEventListener('change', (e)=>applyLang(e.target.value));
-</script>
 </body>
 </html>
