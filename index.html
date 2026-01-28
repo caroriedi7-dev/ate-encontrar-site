@@ -8,14 +8,14 @@
   <style>
     :root{
   /* Palette vert + bleu */
-  --bg:#F5F8F7;        /* fond très clair, légèrement vert */
-  --fg:#1F3A5F;        /* bleu profond (titres, header) */
-  --text:#243033;      /* texte principal (lisible, doux) */
-  --muted:#3F5257;     /* texte secondaire */
-  --line:#D9E4E1;      /* séparations */
-  --card:#FFFFFF;     /* cartes blanches (respiration) */
-  --accent:#5FAF9E;    /* vert espoir */
-  --accent2:#3B82B8;   /* bleu secondaire (liens si besoin) */
+  --bg:#F6FBFA;          /* fond clair, plus frais */
+--fg:#163A6B;          /* bleu plus profond (titres) */
+--text:#1F2A2E;        /* texte plus net */
+--muted:#40535A;       /* moins grisâtre */
+--line:#D3E3E1;
+--card:#FFFFFF;
+--accent:#2FB38C;      /* vert plus vivant */
+--accent2:#2563EB;     /* bleu plus vivant (liens/CTA) */
   --radius:18px;
 }
     *{box-sizing:border-box}
@@ -48,13 +48,14 @@ a:hover{opacity:.9}
     button.primary{background:var(--accent);color:#ffffff;border-color:var(--accent)}
     button.primary:hover{opacity:.92}
     .hero{
-  padding:38px 0 26px;
-  background: linear-gradient(135deg, rgba(59,130,184,.14), rgba(95,175,158,.14));
+  padding:38px 26px 26px;
+  background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(47,179,140,.14));
   border:1px solid var(--line);
   border-radius:24px;
 }
     .kicker{color:var(--muted);font-size:14px;margin:0 0 8px}
     .title{font-size:42px;line-height:1.1;margin:0 0 14px}
+    .title{color:var(--fg)}
     .subtitle{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 18px}
     .quote{
       border-left:4px solid var(--accent);
@@ -132,9 +133,17 @@ a:hover{opacity:.9}
     <p class="kicker" data-i18n="kicker">Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas</p>
     <h2 class="title" data-i18n="hero_title">Até Encontrar</h2>
     <p class="subtitle" data-i18n="hero_subtitle">
+      <img class="heroImg" src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1400&q=80" alt="Imagem simbólica" />
       Criamos esta associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com esperança lúcida, rigor e transparência.
     </p>
-
+.heroImg{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:18px;
+  margin:16px 0 8px;
+  border:1px solid var(--line);
+}
     <div class="quote">
       <p data-i18n="quote">
         “Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”
@@ -242,18 +251,37 @@ a:hover{opacity:.9}
     </p>
 
     <div class="card">
-      <h3 data-i18n="support_how_title">Como apoiar (em breve)</h3>
-      <p class="muted" data-i18n="support_how_text">
-        Aqui você poderá adicionar: PIX, transferência bancária, cartão, e links oficiais. Recomendamos manter tudo centralizado na conta da associação.
-      </p>
-      <div class="divider"></div>
-      <p class="muted" data-i18n="contact_text">
-        Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
-      </p>
-      <p class="notice" data-i18n="privacy_note">
-        Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.
-      </p>
-    </div>
+  <h3 data-i18n="support_how_title">Como apoiar</h3>
+
+  <div class="donateGrid">
+    <a class="donateBtn pix" href="#" onclick="return false;">
+      <div class="donateTitle">PIX</div>
+      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+    </a>
+
+    <a class="donateBtn cardpay" href="#" onclick="return false;">
+      <div class="donateTitle" data-i18n="donate_card">Cartão</div>
+      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+    </a>
+
+    <a class="donateBtn intl" href="#" onclick="return false;">
+      <div class="donateTitle" data-i18n="donate_intl">Internacional</div>
+      <div class="donateSmall" data-i18n="donate_soon">Em breve</div>
+    </a>
+  </div>
+
+  <p class="notice" style="margin-top:14px" data-i18n="support_how_text">
+    Em breve você encontrará aqui os dados oficiais (PIX, cartão e doações internacionais). Recomendamos manter as doações centralizadas na conta da associação.
+  </p>
+
+  <div class="divider"></div>
+  <p class="muted" data-i18n="contact_text">
+    Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
+  </p>
+  <p class="notice" data-i18n="privacy_note">
+    Optamos por preservar a intimidade de Giulia e da família. Compartilharemos apenas o necessário, com respeito e sobriedade.
+  </p>
+</div>
   </section>
 
   <div class="footer">
