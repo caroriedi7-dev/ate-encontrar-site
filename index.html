@@ -7,17 +7,24 @@
   <meta name="description" content="Até Encontrar: apoiar a pesquisa científica para doenças raras do neurodesenvolvimento." />
   <style>
     :root{
-      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --line:#e2e8f0;
-      --card:#f8fafc; --accent:#0ea5e9; --accent2:#f59e0b;
-      --radius:18px;
-    }
+  /* Palette vert + bleu */
+  --bg:#F5F8F7;        /* fond très clair, légèrement vert */
+  --fg:#1F3A5F;        /* bleu profond (titres, header) */
+  --text:#243033;      /* texte principal (lisible, doux) */
+  --muted:#5E6E73;     /* texte secondaire */
+  --line:#D9E4E1;      /* séparations */
+  --card:#FFFFFF;     /* cartes blanches (respiration) */
+  --accent:#5FAF9E;    /* vert espoir */
+  --accent2:#3B82B8;   /* bleu secondaire (liens si besoin) */
+  --radius:18px;
+}
     *{box-sizing:border-box}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-         background:var(--bg);color:var(--fg);line-height:1.55}
+         background:var(--bg);color:var(--text);line-height:1.55}
     a{color:inherit}
     .wrap{max-width:980px;margin:0 auto;padding:24px}
     header{
-      position:sticky;top:0;background:rgba(255,255,255,.88);
+      position:sticky;top:0;background:rgba(245,248,247,.95);
       backdrop-filter:saturate(180%) blur(10px);
       border-bottom:1px solid var(--line); z-index:10;
     }
@@ -33,7 +40,7 @@
       font-size:14px;border:1px solid var(--line);background:#fff;color:var(--fg);
       padding:8px 10px;border-radius:999px;cursor:pointer
     }
-    button.primary{background:var(--fg);color:#fff;border-color:var(--fg)}
+    button.primary{background:var(--accent);color:#ffffff;border-color:var(--accent)}
     button.primary:hover{opacity:.92}
     .hero{padding:38px 0 26px}
     .kicker{color:var(--muted);font-size:14px;margin:0 0 8px}
