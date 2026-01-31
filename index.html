@@ -3,26 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Até Encontrar | Until We Find</title>
-  <meta name="description" content="Até Encontrar — associação para apoiar pesquisa científica em doenças raras do neurodesenvolvimento com transparência e responsabilidade." />
+  <title>Até Encontrar | Pesquisa PKS</title>
+  <meta name="description" content="Ajude a iniciar a pesquisa para a Síndrome de Pallister-Killian (PKS) com organoides cerebrais." />
+
+  <!-- OG (para aparecer bonito quando compartilhar no WhatsApp / redes) -->
+  <meta property="og:title" content="Até Encontrar | Pesquisa PKS" />
+  <meta property="og:description" content="Giulia tem PKS. A pesquisa ainda não começou. Ajude a iniciar um estudo com organoides cerebrais." />
+  <meta property="og:type" content="website" />
+  <!-- TROQUE pela imagem de compartilhamento depois (explico) -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1600&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     :root{
-      /* Mix Fondation (sobre) + Campagne (énergie) */
       --bg:#F4FBF8;
-      --fg:#0E2F63;          /* bleu institutionnel */
-      --text:#102026;
+      --fg:#0D2F63;
+      --text:#0F1F26;
       --muted:#4B6068;
-      --line:#D5E7E3;
+      --line:#D6E7E3;
       --card:#FFFFFF;
 
-      --accent:#22B07D;      /* vert campagne */
-      --accent2:#2563EB;     /* bleu CTA */
-      --danger:#E11D48;
+      --accent:#22B07D;
+      --accent2:#2563EB;
+      --dark:#0B1B2A;
 
-      --radius:20px;
-      --shadow: 0 18px 45px rgba(14,47,99,.10);
-      --shadow2: 0 10px 22px rgba(14,47,99,.08);
+      --radius:22px;
+      --shadow: 0 22px 70px rgba(13,47,99,.14);
+      --shadow2: 0 12px 28px rgba(13,47,99,.10);
     }
 
     *{box-sizing:border-box}
@@ -33,259 +40,206 @@
       color:var(--text);
       line-height:1.6;
       background:
-        radial-gradient(900px 520px at 10% 10%, rgba(37,99,235,.12), transparent 62%),
-        radial-gradient(900px 520px at 90% 14%, rgba(34,176,125,.12), transparent 62%),
+        radial-gradient(900px 520px at 10% 10%, rgba(37,99,235,.14), transparent 62%),
+        radial-gradient(900px 520px at 90% 14%, rgba(34,176,125,.14), transparent 62%),
         var(--bg);
     }
 
-    a{color:var(--accent2); text-decoration:none}
-    a:hover{opacity:.92}
+    a{color:inherit}
+    .wrap{max-width:1140px;margin:0 auto;padding:20px}
 
-    .wrap{max-width:1100px; margin:0 auto; padding:22px}
-
-    /* Header */
     header{
-      position:sticky; top:0; z-index:10;
-      background: rgba(244,251,248,.88);
+      position:sticky;top:0;z-index:30;
+      background:rgba(244,251,248,.90);
       backdrop-filter: blur(12px) saturate(180%);
       border-bottom:1px solid var(--line);
     }
     .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; flex-wrap:wrap;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;
     }
     .brand{
-      display:flex; align-items:baseline; gap:10px;
-      white-space:nowrap;
+      display:flex;align-items:baseline;gap:10px;white-space:nowrap;
     }
     .brand h1{
-      margin:0; font-size:16px; letter-spacing:.2px; color:var(--fg);
-      font-weight:900;
+      margin:0;font-size:16px;letter-spacing:.2px;color:var(--fg);
+      font-weight:1000;
     }
-    .brand small{color:var(--muted); font-weight:650}
+    .brand small{color:var(--muted);font-weight:800}
 
-    nav{
-      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
-    }
+    nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
     nav a{
-      font-size:14px;
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:999px;
+      font-size:14px;color:var(--muted);
+      padding:8px 10px;border-radius:999px;text-decoration:none;
     }
-    nav a:hover{background:rgba(37,99,235,.10); color:var(--fg)}
+    nav a:hover{background:rgba(37,99,235,.10);color:var(--fg)}
+    .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
-    .controls{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    button{
+      font-size:14px;padding:10px 12px;border-radius:999px;
+      border:1px solid var(--line);background:#fff;color:var(--fg);cursor:pointer;
     }
-    select, button{
-      font-size:14px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--fg);
-      cursor:pointer;
-    }
+
     .btnPrimary{
-      border:none; color:#fff; font-weight:900;
+      border:none;color:#fff;font-weight:1000;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
       box-shadow: var(--shadow2);
     }
-    .btnPrimary:hover{transform:translateY(-1px); transition:.15s}
+    .btnPrimary:hover{transform:translateY(-1px);transition:.15s}
+
     .btnGhost{
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.90);
       border:1px solid rgba(37,99,235,.25);
       color:var(--fg);
-      font-weight:800;
+      font-weight:950;
     }
     .btnGhost:hover{background:rgba(37,99,235,.10)}
 
-    @media (max-width:860px){
+    @media (max-width:900px){
       nav{width:100%}
-      .controls{width:100%; justify-content:flex-start}
+      .controls{width:100%;justify-content:flex-start}
     }
 
-    /* Hero */
     .hero{
-      margin-top:18px;
+      margin-top:16px;
       border-radius:32px;
       overflow:hidden;
       box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,.55);
-      background: linear-gradient(135deg, rgba(37,99,235,.16), rgba(34,176,125,.16));
+      border:1px solid rgba(255,255,255,.60);
+      background: linear-gradient(135deg, rgba(37,99,235,.18), rgba(34,176,125,.18));
     }
     .heroInner{
       display:grid;
-      grid-template-columns: 1.12fr .88fr;
+      grid-template-columns: 1.08fr .92fr;
       gap:16px;
-      padding:22px;
+      padding:18px;
       align-items:stretch;
     }
-    @media (max-width:980px){
-      .heroInner{grid-template-columns:1fr}
-    }
+    @media (max-width:980px){ .heroInner{grid-template-columns:1fr} }
+
     .heroText{
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.70);
-      border-radius:24px;
-      padding:18px;
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(255,255,255,.76);
+      border-radius:26px;
+      padding:22px;
     }
-    .kicker{margin:0 0 8px; color:var(--muted); font-size:14px}
-    .heroTitle{margin:0 0 10px; color:var(--fg); font-size:44px; line-height:1.05; letter-spacing:-.6px}
-    .heroSub{margin:0 0 14px; color:var(--muted); font-size:18px; max-width:62ch}
+    .kicker{margin:0 0 10px;color:var(--muted);font-size:14px;font-weight:800}
+    .heroTitle{
+      margin:0 0 10px;
+      color:var(--fg);
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+      font-weight:1000;
+    }
+    .heroSub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:18px;
+      max-width:78ch;
+    }
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:999px;
+      background: rgba(255,255,255,.95);
+      border:1px solid rgba(13,47,99,.14);
+      box-shadow: var(--shadow2);
+      font-size:13px;color:var(--fg);font-weight:900;
+      white-space:nowrap;
+    }
+
+    .heroCTA{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 
     .quote{
       margin-top:14px;
       padding:14px 14px;
       border-left:4px solid var(--accent);
-      background: rgba(255,255,255,.88);
-      border-radius:16px;
+      background: rgba(255,255,255,.94);
+      border-radius:18px;
     }
-    .quote strong{color:var(--fg)}
-    .fine{margin:10px 0 0; font-size:12px; color:var(--muted)}
-
-    .heroCTA{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .quote strong{color:var(--fg);font-weight:1000}
+    .fine{margin:10px 0 0;font-size:12px;color:var(--muted)}
 
     .heroMedia{
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.55);
+      border-radius:26px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.60);
       background:#fff;
       position:relative;
       box-shadow: var(--shadow2);
+      min-height:360px;
     }
     .heroMedia img{
       width:100%;
       height:100%;
-      min-height:320px;
       object-fit:cover;
       display:block;
+      min-height:360px;
     }
     .mediaTag{
-      position:absolute; left:14px; bottom:14px;
-      background: rgba(16,32,38,.70);
-      color:#fff;
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:12px;
+      position:absolute;left:14px;bottom:14px;
+      background: rgba(16,31,38,.74);
+      color:#fff;padding:10px 12px;border-radius:999px;
+      font-size:12px;font-weight:850;
       border:1px solid rgba(255,255,255,.22);
       backdrop-filter: blur(10px);
     }
 
-    /* Campaign bar */
-    .campaignBar{
-      margin-top:14px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      background: rgba(255,255,255,.82);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:14px 16px;
-      box-shadow: var(--shadow2);
-    }
-    .campaignLeft{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-    }
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--fg);
-      font-weight:850;
-      font-size:13px;
-    }
-    .pill small{color:var(--muted); font-weight:650}
-
-    .progress{
-      flex:1;
-      min-width:220px;
-      max-width:520px;
-    }
-    .progressTop{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:8px;
-    }
-    .bar{
-      height:10px;
-      background: rgba(14,47,99,.10);
-      border-radius:999px;
-      overflow:hidden;
-      border:1px solid rgba(14,47,99,.10);
-    }
-    .bar > div{
-      width:12%; /* <-- tu peux changer plus tard */
-      height:100%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-    }
-
-    /* Sections */
     section{scroll-margin-top:96px}
-    .section{
-      margin-top:22px;
+    .sectionTitle{
+      margin:22px 0 10px;
+      color:var(--fg);
+      font-size:26px;
+      letter-spacing:-.2px;
+      font-weight:1000;
+    }
+    .sectionSub{
+      margin:0 0 14px;
+      color:var(--muted);
+      max-width:90ch;
+      font-size:16px;
+    }
+
+    .grid2{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:16px;
+      margin-top:16px;
       align-items:stretch;
     }
-    @media (max-width:980px){
-      .section{grid-template-columns:1fr}
-    }
+    @media (max-width:980px){ .grid2{grid-template-columns:1fr} }
 
     .card{
       background: rgba(255,255,255,.92);
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:26px;
       padding:20px;
       box-shadow: var(--shadow2);
     }
-
     .cardTitle{
       margin:0 0 10px;
       color:var(--fg);
       font-size:20px;
       letter-spacing:-.2px;
-      font-weight:900;
+      font-weight:1000;
     }
-    .cardText{margin:0; color:var(--muted); max-width:80ch}
-    .bullets{margin:12px 0 0; padding-left:18px; color:var(--muted)}
-    .bullets li{margin:6px 0}
+    .cardText{margin:0;color:var(--muted);max-width:90ch}
+    .bullets{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+    .bullets li{margin:8px 0}
 
-    .imageCard{
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.65);
-      box-shadow: var(--shadow2);
-      background:#fff;
-    }
-    .imageCard img{
-      width:100%;
-      height:340px;
-      object-fit:cover;
-      display:block;
-    }
-    @media (max-width:980px){ .imageCard img{height:260px} }
-    .caption{
-      padding:12px 14px;
-      font-size:12px;
-      color:var(--muted);
-      background: rgba(255,255,255,.96);
-      border-top:1px solid var(--line);
+    .donateZone{
+      margin-top:16px;
+      border-radius:28px;
+      padding:18px;
+      background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(34,176,125,.18));
+      border:1px solid rgba(255,255,255,.60);
+      box-shadow: var(--shadow);
     }
 
-    /* Donation area */
     .donateGrid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:repeat(3,1fr);
       gap:12px;
       margin-top:14px;
     }
@@ -293,56 +247,38 @@
 
     .donateBtn{
       display:block;
-      padding:16px;
-      border-radius:18px;
-      border:2px solid rgba(34,176,125,.30);
-      background: linear-gradient(135deg, rgba(34,176,125,.18), rgba(255,255,255,.95));
+      padding:18px;
+      border-radius:20px;
+      text-decoration:none;
+      border:2px solid rgba(34,176,125,.34);
+      background: rgba(255,255,255,.94);
       box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
     }
-    .donateBtn:hover{transform:translateY(-1px); transition:.15s}
-    .donateBtn.blue{
-      border-color: rgba(37,99,235,.30);
-      background: linear-gradient(135deg, rgba(37,99,235,.18), rgba(255,255,255,.95));
-    }
-    .donateBtn.dark{
-      border-color: rgba(14,47,99,.20);
-      background: linear-gradient(135deg, rgba(14,47,99,.12), rgba(255,255,255,.95));
-    }
-    .donateTitle{font-weight:950; color:var(--fg); font-size:16px; margin-bottom:6px}
-    .donateSmall{font-size:13px; color:var(--muted)}
+    .donateBtn:hover{transform:translateY(-1px);transition:.15s}
+    .donateTitle{font-weight:1000;color:var(--fg);font-size:16px;margin-bottom:6px}
+    .donateSmall{font-size:13px;color:var(--muted)}
+    .donateBtn.blue{border-color: rgba(37,99,235,.34)}
+    .donateBtn.dark{border-color: rgba(13,47,99,.22)}
 
-    .trustGrid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
+    .callout{
       margin-top:14px;
-    }
-    @media (max-width:980px){ .trustGrid{grid-template-columns:1fr} }
-    .trust{
-      border:1px solid var(--line);
-      background:#fff;
       border-radius:18px;
       padding:14px;
+      background: linear-gradient(135deg, rgba(34,176,125,.16), rgba(37,99,235,.12));
+      border:1px solid rgba(37,99,235,.16);
     }
-    .trust b{color:var(--fg)}
-    .trust p{margin:6px 0 0; color:var(--muted); font-size:13px}
-
-    .divider{height:1px; background:var(--line); margin:16px 0}
-    .muted{color:var(--muted)}
+    .callout b{color:var(--fg)}
 
     footer{
-      margin-top:24px;
+      margin-top:26px;
       border-top:1px solid var(--line);
-      padding:18px 0;
+      padding:18px 0 40px;
       color:var(--muted);
       font-size:13px;
     }
-    .footerGrid{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-    }
+    .footerGrid{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </style>
 </head>
 
@@ -350,28 +286,20 @@
 <header>
   <div class="wrap topbar">
     <div class="brand">
-      <h1 id="brandName">Até Encontrar</h1>
-      <small id="brandAlt">Until We Find</small>
+      <h1>Até Encontrar</h1>
+      <small>Pesquisa PKS</small>
     </div>
 
-    <nav>
-      <a href="#home" data-i18n="nav_home">Início</a>
-      <a href="#mission" data-i18n="nav_mission">Missão</a>
-      <a href="#pks" data-i18n="nav_pks">PKS</a>
-      <a href="#research" data-i18n="nav_research">Pesquisa</a>
-      <a href="#transparency" data-i18n="nav_transp">Transparência</a>
-      <a href="#donate" data-i18n="nav_donate">Doar</a>
+    <nav aria-label="Navegação">
+      <a href="#home">Início</a>
+      <a href="#story">A Giulia</a>
+      <a href="#research">A pesquisa</a>
+      <a href="#donate">Doar</a>
     </nav>
 
     <div class="controls">
-      <select id="lang" aria-label="Language">
-        <option value="pt">PT</option>
-        <option value="fr">FR</option>
-        <option value="en">EN</option>
-      </select>
-      <button class="btnPrimary" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})" data-i18n="btn_donate">
-        Doar
-      </button>
+      <button class="btnPrimary" onclick="scrollToDonate()">Doar agora</button>
+      <button class="btnGhost" onclick="shareWhatsApp()">Compartilhar</button>
     </div>
   </div>
 </header>
@@ -382,392 +310,194 @@
   <section id="home" class="hero">
     <div class="heroInner">
       <div class="heroText">
-        <p class="kicker" data-i18n="kicker">Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas</p>
-        <h2 class="heroTitle" data-i18n="hero_title">Até Encontrar</h2>
-        <p class="heroSub" data-i18n="hero_subtitle">
-          Associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com rigor, transparência e respeito à privacidade.
+        <p class="kicker">Giulia tem uma síndrome genética rara. A pesquisa ainda não começou.</p>
+
+        <h2 class="heroTitle">Até Encontrar</h2>
+
+        <p class="heroSub">
+          Giulia recebeu o diagnóstico de <b>Síndrome de Pallister-Killian (PKS)</b> — uma condição genética rara, sem tratamento específico.
+          <br><br>
+          Hoje, existe um <b>laboratório nos Estados Unidos</b> pronto para iniciar uma pesquisa com <b>organoides cerebrais</b>.
+          O projeto está pronto. A ciência está pronta. <b>O que falta é financiamento.</b>
         </p>
 
+        <div class="chips" aria-label="Destaques">
+          <span class="chip">🧠 Pesquisa com organoides</span>
+          <span class="chip">🇺🇸 Laboratório nos EUA</span>
+          <span class="chip">⚡ Pronto para começar</span>
+        </div>
+
         <div class="heroCTA">
-          <button class="btnPrimary" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})" data-i18n="btn_donate_now">Doar agora</button>
-          <button class="btnGhost" onclick="document.getElementById('transparency').scrollIntoView({behavior:'smooth'})" data-i18n="btn_transparency">Ver transparência</button>
+          <button class="btnPrimary" onclick="scrollToDonate()">Doar agora</button>
+          <button class="btnGhost" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Ler a história</button>
         </div>
 
         <div class="quote">
-          <strong data-i18n="quote">“Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”</strong>
-          <div class="fine" data-i18n="quote_note">Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.</div>
+          <strong>“Sem pesquisa, não existe chance.”</strong>
+          <div class="fine">Cada avanço começa com alguém decidindo começar.</div>
         </div>
       </div>
 
       <div class="heroMedia">
-        <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-        <div class="mediaTag" data-i18n="media_tag">Imagem simbólica — sem exposição</div>
+        <!-- TROQUE pela foto da Giulia -->
+        <img src="GIRL_PHOTO_URL_AQUI" alt="Foto da Giulia" onerror="this.src='https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1600&q=80';this.alt='Imagem provisória';" />
+        <div class="mediaTag">Foto — Giulia</div>
       </div>
     </div>
   </section>
 
-  <!-- Campaign / Trust bar -->
-  <div class="campaignBar">
-    <div class="campaignLeft">
-      <span class="pill">🔒 <span data-i18n="pill_privacy">Privacidade</span> <small data-i18n="pill_privacy_s">exposição mínima</small></span>
-      <span class="pill">📊 <span data-i18n="pill_transp">Transparência</span> <small data-i18n="pill_transp_s">prestação de contas</small></span>
-      <span class="pill">🧪 <span data-i18n="pill_science">Ciência</span> <small data-i18n="pill_science_s">sem atalhos</small></span>
-    </div>
+  <!-- HISTÓRIA -->
+  <section id="story" style="margin-top:18px;">
+    <h3 class="sectionTitle">Quem é a Giulia</h3>
+    <p class="sectionSub">
+      Uma história real. Sem exagero. Só a verdade — e a urgência de começar algo que ainda não existe.
+    </p>
 
-    <div class="progress" aria-label="Progresso da campanha (exemplo)">
-      <div class="progressTop">
-        <span data-i18n="progress_goal">Meta inicial (exemplo)</span>
-        <span><b data-i18n="progress_pct">12%</b></span>
-      </div>
-      <div class="bar"><div></div></div>
-      <div class="fine" data-i18n="progress_note">Valores e metas oficiais serão publicados assim que a associação estiver formalizada.</div>
-    </div>
-  </div>
-
-  <!-- MISSION -->
-  <section id="mission" class="section">
-    <div class="card">
-      <h3 class="cardTitle" data-i18n="mission_title">Missão</h3>
-      <p class="cardText" data-i18n="mission_text">
-        Transformar esperança em possibilidade: apoiar pesquisa séria, conectar famílias e garantir transparência total.
-      </p>
-      <ul class="bullets">
-        <li data-i18n="mission_li1"><b>Pesquisa científica:</b> apoio a projetos e estudos exploratórios com base científica.</li>
-        <li data-i18n="mission_li2"><b>Logística vinculada à pesquisa:</b> custos relacionados a protocolos (quando aplicável).</li>
-        <li data-i18n="mission_li3"><b>Qualidade de vida:</b> ações de suporte (sem substituir acompanhamento médico).</li>
-      </ul>
-    </div>
-
-    <div class="imageCard">
-      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-      <div class="caption" data-i18n="cap_mission">Rigor e confiança: uma associação clara, com prestação de contas.</div>
-    </div>
-  </section>
-
-  <!-- PKS -->
-  <section id="pks" class="section">
-    <div class="imageCard">
-      <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-      <div class="caption" data-i18n="cap_pks">Variabilidade real: informação com cuidado, sem comparações injustas.</div>
-    </div>
-
-    <div class="card">
-      <h3 class="cardTitle" data-i18n="pks_title">PKS (Pallister-Killian)</h3>
-      <p class="cardText" data-i18n="pks_text">
-        PKS é uma condição genética rara do neurodesenvolvimento, frequentemente em mosaico, com grande variabilidade clínica. Cada criança é única.
-      </p>
-      <ul class="bullets">
-        <li data-i18n="pks_li1">Redes sociais não representam uma amostra científica.</li>
-        <li data-i18n="pks_li2">Hoje não existe tratamento curativo específico.</li>
-        <li data-i18n="pks_li3">Terapias e acompanhamento podem contribuir para qualidade de vida.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- RESEARCH -->
-  <section id="research" class="section">
-    <div class="card">
-      <h3 class="cardTitle" data-i18n="research_title">Pesquisa</h3>
-      <p class="cardText" data-i18n="research_text">
-        Em doenças raras, o maior obstáculo muitas vezes é a falta de recursos. A ciência avança por etapas, e apoiar pesquisa é criar a possibilidade de respostas.
-      </p>
-      <div class="divider"></div>
-      <p class="cardText" data-i18n="research_note">
-        Compromisso: apoiar ciência séria, sem prometer resultados.
-      </p>
-    </div>
-
-    <div class="imageCard">
-      <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-      <div class="caption" data-i18n="cap_research">A pesquisa começa com um primeiro passo — com método e responsabilidade.</div>
-    </div>
-  </section>
-
-  <!-- TRANSPARENCY -->
-  <section id="transparency" class="section">
-    <div class="imageCard">
-      <img src="https://images.unsplash.com/photo-1520975958225-6a92b9d9c7c9?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-      <div class="caption" data-i18n="cap_transp">Transparência gera confiança — e confiança torna a pesquisa possível.</div>
-    </div>
-
-    <div class="card">
-      <h3 class="cardTitle" data-i18n="transp_title">Transparência</h3>
-      <p class="cardText" data-i18n="transp_text">
-        Prestação de contas é parte central da associação. Publicaremos atualizações regulares sobre valores arrecadados e uso dos recursos.
-      </p>
-
-      <div class="trustGrid">
-        <div class="trust">
-          <b data-i18n="transp_box1_title">Documentos</b>
-          <p data-i18n="transp_box1_text">CNPJ, diretoria e estatuto (em breve).</p>
-        </div>
-        <div class="trust">
-          <b data-i18n="transp_box2_title">Relatórios</b>
-          <p data-i18n="transp_box2_text">Relatórios financeiros e atualizações do projeto.</p>
-        </div>
-        <div class="trust">
-          <b data-i18n="transp_box3_title">Sem promessas</b>
-          <p data-i18n="transp_box3_text">A pesquisa leva tempo e não há garantias — nosso compromisso é com a honestidade.</p>
-        </div>
+    <div class="grid2">
+      <div class="card">
+        <h4 class="cardTitle">O começo</h4>
+        <p class="cardText">
+          Giulia nasceu e, logo após o parto, precisou ser internada na UTI neonatal.
+          Foram <b>10 dias no hospital</b>, e saímos com o diagnóstico de <b>dolicocólon</b>.
+          <br><br>
+          Nos primeiros meses, tudo parecia seguir normalmente. Giulia crescia, ganhava peso, sorria.
+        </p>
       </div>
 
-      <div class="fine" style="margin-top:12px" data-i18n="transp_disclaimer">
-        Não prometemos cura. Prometemos seriedade e transparência.
+      <div class="card">
+        <h4 class="cardTitle">Quando tudo mudou</h4>
+        <p class="cardText">
+          Aos <b>4 meses</b>, algo mudou.
+          Giulia ficou <b>hipotônica</b> e já não conseguia sustentar a cabeça como antes.
+          <br><br>
+          Começamos uma corrida por respostas: internações, exames, <b>ressonância</b>, <b>EEG</b>, fundo de olho, exames metabólicos e genéticos.
+          O cariótipo no sangue e o exoma vieram normais.
+          Mas o geneticista pediu um <b>frottis bucal</b>.
+          Foi esse exame que trouxe o diagnóstico: <b>PKS (i12p)</b>.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h4 class="cardTitle">A frase que ninguém quer ouvir</h4>
+      <p class="cardText">
+        E então ouvimos: <b>não existe tratamento específico</b>.
+        Apenas cuidados de suporte: fisioterapia, psicomotricidade e acompanhamento.
+        <br><br>
+        É por isso que estamos aqui. Porque sem pesquisa, nada muda.
+      </p>
+    </div>
+  </section>
+
+  <!-- PESQUISA -->
+  <section id="research" style="margin-top:18px;">
+    <h3 class="sectionTitle">Por que a pesquisa importa</h3>
+    <p class="sectionSub">
+      Em doenças raras, muitas vezes a ciência é possível. O que falta é o que viabiliza tudo: pesquisa.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4 class="cardTitle">O que são organoides cerebrais</h4>
+        <p class="cardText">
+          Os organoides cerebrais são modelos biológicos criados em laboratório a partir de células humanas.
+          <br><br>
+          O estudo começa com uma <b>biópsia de pele</b> (procedimento simples). A partir dessas células, é possível criar organoides
+          — estruturas que ajudam os pesquisadores a observar como o cérebro se desenvolve e reage.
+          <br><br>
+          Na prática, isso cria um tipo de <b>“avatar biológico”</b>, permitindo testar hipóteses sem experimentar diretamente nas crianças.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4 class="cardTitle">Sem promessas. Com um plano real.</h4>
+        <p class="cardText">
+          Pesquisa não garante cura. Mas <b>sem pesquisa, não existe chance</b>.
+          <br><br>
+          Esta primeira fase busca gerar evidências iniciais e abrir caminhos para próximas etapas.
+        </p>
+        <ul class="bullets">
+          <li>Modelos derivados do paciente</li>
+          <li>Observação de mecanismos</li>
+          <li>Base para próximos estudos</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- DONATE -->
-  <section id="donate" class="section">
-    <div class="card">
-      <h3 class="cardTitle" data-i18n="donate_title">Doar</h3>
-      <p class="cardText" data-i18n="donate_text">
-        Se você deseja ajudar, estas são as formas mais diretas. Assim que os dados oficiais estiverem prontos, colocaremos tudo aqui.
-      </p>
+  <!-- DOAR -->
+  <section id="donate" class="donateZone" aria-label="Doação">
+    <h3 class="sectionTitle" style="margin-top:0;">Como você pode ajudar</h3>
+    <p class="sectionSub">
+      Se você puder doar, você acelera o começo da pesquisa. Se não puder, <b>compartilhar</b> já ajuda muito.
+    </p>
 
-      <div class="donateGrid">
-        <a class="donateBtn" href="#" onclick="return false;">
-          <div class="donateTitle">PIX</div>
-          <div class="donateSmall" data-i18n="soon">em breve</div>
-        </a>
+    <div class="donateGrid">
+      <!-- Troque os links depois -->
+      <a class="donateBtn" href="#" onclick="return false;" aria-disabled="true">
+        <div class="donateTitle">PIX (Brasil)</div>
+        <div class="donateSmall">Coloque aqui sua chave/QR Code quando tiver</div>
+        <div class="donateSmall" style="margin-top:10px;"><b>Em breve</b></div>
+      </a>
 
-        <a class="donateBtn blue" href="#" onclick="return false;">
-          <div class="donateTitle" data-i18n="donate_card">Cartão</div>
-          <div class="donateSmall" data-i18n="soon">em breve</div>
-        </a>
+      <a class="donateBtn blue" href="#" onclick="return false;" aria-disabled="true">
+        <div class="donateTitle">Cartão</div>
+        <div class="donateSmall">Coloque aqui o link seguro de pagamento</div>
+        <div class="donateSmall" style="margin-top:10px;"><b>Em breve</b></div>
+      </a>
 
-        <a class="donateBtn dark" href="#" onclick="return false;">
-          <div class="donateTitle" data-i18n="donate_intl">Internacional</div>
-          <div class="donateSmall" data-i18n="soon">em breve</div>
-        </a>
-      </div>
-
-      <div class="divider"></div>
-      <p class="muted" data-i18n="contact_text">Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b></p>
-      <p class="fine" data-i18n="privacy_note">Vamos compartilhar apenas o necessário — sem exposição excessiva da criança ou da família.</p>
+      <a class="donateBtn dark" href="#" onclick="return false;" aria-disabled="true">
+        <div class="donateTitle">Doação internacional</div>
+        <div class="donateSmall">Links/dados para doação fora do Brasil</div>
+        <div class="donateSmall" style="margin-top:10px;"><b>Em breve</b></div>
+      </a>
     </div>
 
-    <div class="imageCard">
-      <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1600&q=80" alt="Imagem simbólica" />
-      <div class="caption" data-i18n="cap_donate">Uma comunidade mobilizada pode viabilizar a pesquisa.</div>
+    <div class="callout">
+      <b>Não pode doar agora?</b>
+      <div class="cardText">
+        Compartilhe com <b>5 pessoas</b>. Uma campanha só ganha velocidade quando muita gente vê.
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btnPrimary" onclick="shareWhatsApp()">Compartilhar no WhatsApp</button>
+        <button class="btnGhost" onclick="copyLink()">Copiar link</button>
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="footerGrid">
-      <div>© <span id="year"></span> <span data-i18n="footer_name">Até Encontrar</span> / Until We Find</div>
-      <div data-i18n="footer_note">Transparência · Ciência · Respeito</div>
+      <div>© <span id="year"></span> Até Encontrar</div>
+      <div>PKS · Pesquisa · Organoides cerebrais</div>
+    </div>
+    <div class="fine" style="margin-top:10px;">
+      Contato (trocar depois): <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>
     </div>
   </footer>
 
 </main>
 
 <script>
-  const i18n = {
-    pt: {
-      nav_home:"Início", nav_mission:"Missão", nav_pks:"PKS", nav_research:"Pesquisa", nav_transp:"Transparência", nav_donate:"Doar",
-      btn_donate:"Doar", btn_donate_now:"Doar agora", btn_transparency:"Ver transparência",
-      kicker:"Uma iniciativa para dar tempo à vida, enquanto a ciência busca respostas",
-      hero_title:"Até Encontrar",
-      hero_subtitle:"Associação para apoiar a pesquisa científica em doenças raras do neurodesenvolvimento — com rigor, transparência e respeito à privacidade.",
-      quote:"“Todas as doenças são curáveis. Ainda precisamos encontrar o tratamento.”",
-      quote_note:"Esta frase é uma bússola, não uma promessa. A pesquisa leva tempo e não há garantias.",
-      media_tag:"Imagem simbólica — sem exposição",
-
-      pill_privacy:"Privacidade", pill_privacy_s:"exposição mínima",
-      pill_transp:"Transparência", pill_transp_s:"prestação de contas",
-      pill_science:"Ciência", pill_science_s:"sem atalhos",
-      progress_goal:"Meta inicial (exemplo)",
-      progress_pct:"12%",
-      progress_note:"Valores e metas oficiais serão publicados assim que a associação estiver formalizada.",
-
-      mission_title:"Missão",
-      mission_text:"Transformar esperança em possibilidade: apoiar pesquisa séria, conectar famílias e garantir transparência total.",
-      mission_li1:"<b>Pesquisa científica:</b> apoio a projetos e estudos exploratórios com base científica.",
-      mission_li2:"<b>Logística vinculada à pesquisa:</b> custos relacionados a protocolos (quando aplicável).",
-      mission_li3:"<b>Qualidade de vida:</b> ações de suporte (sem substituir acompanhamento médico).",
-      cap_mission:"Rigor e confiança: uma associação clara, com prestação de contas.",
-
-      pks_title:"PKS (Pallister-Killian)",
-      pks_text:"PKS é uma condição genética rara do neurodesenvolvimento, frequentemente em mosaico, com grande variabilidade clínica. Cada criança é única.",
-      pks_li1:"Redes sociais não representam uma amostra científica.",
-      pks_li2:"Hoje não existe tratamento curativo específico.",
-      pks_li3:"Terapias e acompanhamento podem contribuir para qualidade de vida.",
-      cap_pks:"Variabilidade real: informação com cuidado, sem comparações injustas.",
-
-      research_title:"Pesquisa",
-      research_text:"Em doenças raras, o maior obstáculo muitas vezes é a falta de recursos. A ciência avança por etapas, e apoiar pesquisa é criar a possibilidade de respostas.",
-      research_note:"Compromisso: apoiar ciência séria, sem prometer resultados.",
-      cap_research:"A pesquisa começa com um primeiro passo — com método e responsabilidade.",
-
-      transp_title:"Transparência",
-      transp_text:"Prestação de contas é parte central da associação. Publicaremos atualizações regulares sobre valores arrecadados e uso dos recursos.",
-      transp_box1_title:"Documentos",
-      transp_box1_text:"CNPJ, diretoria e estatuto (em breve).",
-      transp_box2_title:"Relatórios",
-      transp_box2_text:"Relatórios financeiros e atualizações do projeto.",
-      transp_box3_title:"Sem promessas",
-      transp_box3_text:"A pesquisa leva tempo e não há garantias — nosso compromisso é com a honestidade.",
-      transp_disclaimer:"Não prometemos cura. Prometemos seriedade e transparência.",
-      cap_transp:"Transparência gera confiança — e confiança torna a pesquisa possível.",
-
-      donate_title:"Doar",
-      donate_text:"Se você deseja ajudar, estas são as formas mais diretas. Assim que os dados oficiais estiverem prontos, colocaremos tudo aqui.",
-      donate_card:"Cartão",
-      donate_intl:"Internacional",
-      soon:"em breve",
-      contact_text:"Contato: <b>email@exemplo.org</b> · Instagram: <b>@ateencontrar</b>",
-      privacy_note:"Vamos compartilhar apenas o necessário — sem exposição excessiva da criança ou da família.",
-      cap_donate:"Uma comunidade mobilizada pode viabilizar a pesquisa.",
-
-      footer_name:"Até Encontrar",
-      footer_note:"Transparência · Ciência · Respeito"
-    },
-
-    fr: {
-      nav_home:"Accueil", nav_mission:"Mission", nav_pks:"PKS", nav_research:"Recherche", nav_transp:"Transparence", nav_donate:"Donner",
-      btn_donate:"Donner", btn_donate_now:"Donner maintenant", btn_transparency:"Voir la transparence",
-      kicker:"Une initiative pour donner du temps à la vie, pendant que la science cherche des réponses",
-      hero_title:"Jusqu’à trouver",
-      hero_subtitle:"Association pour soutenir la recherche scientifique sur les maladies rares du neurodéveloppement — avec rigueur, transparence et respect de la vie privée.",
-      quote:"« Toutes les maladies sont curables. Encore faut-il trouver le traitement. »",
-      quote_note:"Cette phrase est une boussole, pas une promesse. La recherche prend du temps et il n’y a aucune garantie.",
-      media_tag:"Image symbolique — sans exposition",
-
-      pill_privacy:"Vie privée", pill_privacy_s:"exposition minimale",
-      pill_transp:"Transparence", pill_transp_s:"reddition de comptes",
-      pill_science:"Science", pill_science_s:"sans raccourcis",
-      progress_goal:"Objectif initial (exemple)",
-      progress_pct:"12%",
-      progress_note:"Les montants et objectifs officiels seront publiés dès que l’association sera finalisée.",
-
-      mission_title:"Mission",
-      mission_text:"Transformer l’espoir en possibilité : soutenir une recherche sérieuse, connecter les familles et garantir une transparence totale.",
-      mission_li1:"<b>Recherche scientifique :</b> soutien à des projets et études exploratoires fondées scientifiquement.",
-      mission_li2:"<b>Logistique liée à la recherche :</b> coûts associés aux protocoles (si applicable).",
-      mission_li3:"<b>Qualité de vie :</b> actions de soutien (sans remplacer le suivi médical).",
-      cap_mission:"Rigueur et confiance : une association claire, avec reddition de comptes.",
-
-      pks_title:"PKS (Pallister-Killian)",
-      pks_text:"Le PKS est une maladie génétique rare du neurodéveloppement, souvent en mosaïque, avec une grande variabilité clinique. Chaque enfant est unique.",
-      pks_li1:"Les réseaux sociaux ne sont pas un échantillon scientifique.",
-      pks_li2:"Il n’existe pas de traitement curatif spécifique aujourd’hui.",
-      pks_li3:"Les thérapies et le suivi peuvent contribuer à la qualité de vie.",
-      cap_pks:"Variabilité réelle : information prudente, sans comparaisons injustes.",
-
-      research_title:"Recherche",
-      research_text:"Dans les maladies rares, le principal obstacle est souvent le manque de moyens. La science avance par étapes, et soutenir la recherche crée la possibilité de réponses.",
-      research_note:"Engagement : soutenir une science sérieuse, sans promettre de résultats.",
-      cap_research:"La recherche commence par un premier pas — avec méthode et responsabilité.",
-
-      transp_title:"Transparence",
-      transp_text:"La reddition de comptes est centrale. Nous publierons des mises à jour régulières sur les fonds collectés et leur utilisation.",
-      transp_box1_title:"Documents",
-      transp_box1_text:"CNPJ, gouvernance et statuts (bientôt).",
-      transp_box2_title:"Rapports",
-      transp_box2_text:"Rapports financiers et mises à jour du projet.",
-      transp_box3_title:"Sans promesses",
-      transp_box3_text:"La recherche prend du temps et il n’y a aucune garantie — notre engagement est l’honnêteté.",
-      transp_disclaimer:"Nous ne promettons pas la guérison. Nous promettons le sérieux et la transparence.",
-      cap_transp:"La transparence crée la confiance — et la confiance rend la recherche possible.",
-
-      donate_title:"Donner",
-      donate_text:"Si vous souhaitez aider, voici les moyens les plus directs. Dès que les informations officielles seront prêtes, tout sera affiché ici.",
-      donate_card:"Carte",
-      donate_intl:"International",
-      soon:"bientôt",
-      contact_text:"Contact : <b>email@exemple.org</b> · Instagram : <b>@ateencontrar</b>",
-      privacy_note:"Nous partagerons seulement l’essentiel — sans exposition excessive de l’enfant ou de la famille.",
-      cap_donate:"Une communauté mobilisée peut rendre la recherche possible.",
-
-      footer_name:"Jusqu’à trouver",
-      footer_note:"Transparence · Science · Respect"
-    },
-
-    en: {
-      nav_home:"Home", nav_mission:"Mission", nav_pks:"PKS", nav_research:"Research", nav_transp:"Transparency", nav_donate:"Donate",
-      btn_donate:"Donate", btn_donate_now:"Donate now", btn_transparency:"See transparency",
-      kicker:"An initiative to give time to life while science searches for answers",
-      hero_title:"Until We Find",
-      hero_subtitle:"An association to support scientific research on rare neurodevelopmental conditions — with rigor, transparency, and respect for privacy.",
-      quote:"“All diseases are curable. We still need to find the treatment.”",
-      quote_note:"This sentence is a compass, not a promise. Research takes time and there are no guarantees.",
-      media_tag:"Symbolic image — no exposure",
-
-      pill_privacy:"Privacy", pill_privacy_s:"minimal exposure",
-      pill_transp:"Transparency", pill_transp_s:"accountability",
-      pill_science:"Science", pill_science_s:"no shortcuts",
-      progress_goal:"Initial goal (example)",
-      progress_pct:"12%",
-      progress_note:"Official amounts and targets will be published once the association is finalized.",
-
-      mission_title:"Mission",
-      mission_text:"Turn hope into possibility: support serious research, connect families, and ensure full transparency.",
-      mission_li1:"<b>Scientific research:</b> support for exploratory, science-based projects.",
-      mission_li2:"<b>Research logistics:</b> protocol-related costs (when applicable).",
-      mission_li3:"<b>Quality of life:</b> supportive actions (not replacing medical care).",
-      cap_mission:"Rigor and trust: a clear association with accountability.",
-
-      pks_title:"PKS (Pallister-Killian)",
-      pks_text:"PKS is a rare genetic neurodevelopmental condition, often mosaic, with high clinical variability. Every child is unique.",
-      pks_li1:"Social media is not a scientific sample.",
-      pks_li2:"There is no specific curative treatment today.",
-      pks_li3:"Therapies and follow-up can support quality of life.",
-      cap_pks:"Real variability: careful information, no unfair comparisons.",
-
-      research_title:"Research",
-      research_text:"In rare diseases, the main barrier is often lack of funding. Science advances step by step, and supporting research creates the possibility of answers.",
-      research_note:"Commitment: support serious science, without promising outcomes.",
-      cap_research:"Research starts with a first step — with method and responsibility.",
-
-      transp_title:"Transparency",
-      transp_text:"Accountability is central. We will publish regular updates on funds raised and how they are used.",
-      transp_box1_title:"Documents",
-      transp_box1_text:"CNPJ, governance and bylaws (coming soon).",
-      transp_box2_title:"Reports",
-      transp_box2_text:"Financial reports and project updates.",
-      transp_box3_title:"No promises",
-      transp_box3_text:"Research takes time and there are no guarantees — our commitment is honesty.",
-      transp_disclaimer:"We do not promise a cure. We promise seriousness and transparency.",
-      cap_transp:"Transparency builds trust — and trust makes research possible.",
-
-      donate_title:"Donate",
-      donate_text:"If you want to help, these are the most direct ways. As soon as official details are ready, everything will be shown here.",
-      donate_card:"Card",
-      donate_intl:"International",
-      soon:"coming soon",
-      contact_text:"Contact: <b>email@example.org</b> · Instagram: <b>@ateencontrar</b>",
-      privacy_note:"We will share only what’s necessary — no excessive exposure of the child or family.",
-      cap_donate:"A mobilized community can make research possible.",
-
-      footer_name:"Until We Find",
-      footer_note:"Transparency · Science · Respect"
-    }
-  };
-
-  const yearEl = document.getElementById('year');
-  yearEl.textContent = new Date().getFullYear();
-
-  function applyLang(lang){
-    document.documentElement.lang = (lang === 'pt') ? 'pt-BR' : (lang === 'fr' ? 'fr' : 'en');
-
-    document.getElementById('brandName').textContent =
-      (lang==='pt') ? 'Até Encontrar' : (lang==='fr' ? 'Jusqu’à trouver' : 'Until We Find');
-
-    document.getElementById('brandAlt').textContent =
-      (lang==='pt') ? 'Until We Find' : (lang==='fr' ? 'Until We Find' : 'Até Encontrar');
-
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      const val = i18n[lang][key];
-      if(!val) return;
-      el.innerHTML = val;
-    });
+  function scrollToDonate(){
+    document.getElementById("donate").scrollIntoView({behavior:"smooth"});
   }
 
-  const langSelect = document.getElementById('lang');
-  applyLang('pt');
-  langSelect.addEventListener('change', (e)=>applyLang(e.target.value));
+  function copyLink(){
+    const url = location.href;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(()=>alert("Link copiado!")).catch(()=>prompt("Copie o link:", url));
+    }else{
+      prompt("Copie o link:", url);
+    }
+  }
+
+  function shareWhatsApp(){
+    const text = "Ajude a iniciar a pesquisa para a Síndrome de Pallister-Killian (PKS). Link: " + location.href;
+    window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
